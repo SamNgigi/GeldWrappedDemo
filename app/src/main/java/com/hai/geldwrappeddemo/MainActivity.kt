@@ -3,13 +3,12 @@ package com.hai.geldwrappeddemo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.hai.geldwrappeddemo.data.DummyData
+import com.hai.geldwrappeddemo.ui.pages.FinancialWrappedPager
 import com.hai.geldwrappeddemo.ui.theme.GeldWrappedDemoTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,13 +16,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             GeldWrappedDemoTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                FinancialWrappedPager(
+                    monthlyExpenses = DummyData.monthlySummaries,
+                    yearlySummary = DummyData.yearlySummary
+                )
             }
         }
     }
