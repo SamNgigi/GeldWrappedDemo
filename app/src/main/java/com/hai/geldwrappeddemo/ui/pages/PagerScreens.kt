@@ -1,9 +1,11 @@
 package com.hai.geldwrappeddemo.ui.pages
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -21,6 +23,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.input.pointer.pointerInput
@@ -77,8 +80,13 @@ fun FinancialWrappedStories(
                 )
             }
 
-        Box(modifier = contentModifier) {
-            slides[currentStep.intValue].invoke()
+        Crossfade(
+            targetState = currentStep.intValue,
+            modifier = contentModifier, label = "pagerFade"
+        ) { slideIndex ->
+            Box(modifier = Modifier.fillMaxSize()){
+                slides[slideIndex].invoke()
+            }
         }
 
         // The progress indicators at the top
