@@ -20,8 +20,7 @@ import androidx.compose.ui.unit.dp
 fun ThankYouSlide(){
    Box(
        modifier = Modifier
-           .fillMaxSize()
-           .background(brush = Brush.linearGradient(listOf(Color.Cyan, Color.Blue))),
+           .fillMaxSize(),
        contentAlignment = Alignment.Center
    ){
       Column(horizontalAlignment = Alignment.CenterHorizontally){

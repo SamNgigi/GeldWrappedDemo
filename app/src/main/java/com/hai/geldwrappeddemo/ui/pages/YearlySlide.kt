@@ -26,7 +26,6 @@ fun YearlySlide(summary: YearlyExpenseSummary){
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(brush = Brush.linearGradient(listOf(Color.Cyan, Color.Blue)))
             .padding(16.dp)
     ){
         Column(
