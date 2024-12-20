@@ -29,6 +29,7 @@ import kotlin.math.round
 @Composable
 fun MonthlySlide(summary: MonthlyExpenseSummary) {
 
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -70,6 +71,8 @@ fun MonthlySlide(summary: MonthlyExpenseSummary) {
                 color = Color.White,
             )
         }
+
+
     }
 
 }
