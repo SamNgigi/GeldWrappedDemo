@@ -91,7 +91,7 @@ fun FinancialWrappedStories(
             initialValue = 0f,
             targetValue = gradientSets.size.toFloat(),
             animationSpec = infiniteRepeatable(
-                animation = tween(durationMillis = 11000, easing = FastOutSlowInEasing),
+                animation = tween(durationMillis = 15000, easing = FastOutSlowInEasing),
                 repeatMode = RepeatMode.Restart
             )
         )
