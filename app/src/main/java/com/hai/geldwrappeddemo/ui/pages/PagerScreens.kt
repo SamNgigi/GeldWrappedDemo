@@ -272,7 +272,7 @@ private fun StoryProgressIndicator(
                 progress.animateTo(
                     1f,
                     animationSpec = tween(
-                        durationMillis = ((2f - progress.value) * stepDuration).toInt(),
+                        durationMillis = ((4f - progress.value) * stepDuration).toInt(),
                         easing = LinearEasing
                     )
                 )
