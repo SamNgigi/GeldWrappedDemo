@@ -45,146 +45,6 @@ import com.hai.geldwrappeddemo.data.MonthlyExpenseSummary
 import kotlinx.coroutines.delay
 import kotlin.math.round
 
-/*
-@Composable
-fun MonthlySlide(summary: MonthlyExpenseSummary) {
-    var text1Visible by remember { mutableStateOf(false) }
-    var text2Visible by remember { mutableStateOf(false) }
-    var text3Visible by remember { mutableStateOf(false) }
-    var text4Visible by remember { mutableStateOf(false) }
-
-    // Animation values for spacing
-    val spacing1 by animateDpAsState(
-        targetValue = if (text1Visible) 16.dp else 0.dp,
-        animationSpec = tween(1000), label = ""
-    )
-    val spacing2 by animateDpAsState(
-        targetValue = if (text2Visible) 16.dp else 0.dp,
-        animationSpec = tween(1000), label = ""
-    )
-    val spacing3 by animateDpAsState(
-        targetValue = if (text3Visible) 16.dp else 0.dp,
-        animationSpec = tween(1000), label = ""
-    )
-
-    LaunchedEffect(Unit) {
-        delay(1000)
-        text1Visible = true
-        delay(2000)
-        text2Visible = true
-        delay(1000)
-        text3Visible = true
-        delay(1000)
-        text4Visible = true
-    }
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            modifier = Modifier.width(IntrinsicSize.Min),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Box(
-                modifier = Modifier
-//                    .height(MaterialTheme.typography.titleLarge.fontSize.value.dp * 3f)
-                    .fillMaxWidth()
-            ) {
-                this@Column.AnimatedVisibility(
-                    visible = text1Visible,
-                    enter = slideInVertically(
-                        initialOffsetY = { -it },
-                        animationSpec = tween(2000)
-                    ) + fadeIn(tween(2000))
-                ) {
-                    Text(
-                        text = "Your total spend for the month ${summary.monthName} was",
-                        style = MaterialTheme.typography.titleLarge,
-                        color = Color.White,
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
-            }
-
-            Spacer(Modifier.height(spacing1))
-
-            Box(
-                modifier = Modifier
-                    .height(MaterialTheme.typography.displayMedium.fontSize.value.dp * 1.5f)
-                    .fillMaxWidth()
-            ) {
-                this@Column.AnimatedVisibility(
-                    visible = text2Visible,
-                    enter = slideInHorizontally(
-                        initialOffsetX = { -it },
-                        animationSpec = tween(3000)
-                    ) + fadeIn(tween(3000))
-                ) {
-                    Text(
-                        text = "$${summary.totalSpent}",
-                        style = MaterialTheme.typography.displayMedium,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White,
-                    )
-                }
-            }
-
-            Spacer(Modifier.height(spacing2))
-
-            Box(
-                modifier = Modifier
-                    .height(MaterialTheme.typography.titleMedium.fontSize.value.dp * 1.5f)
-                    .fillMaxWidth()
-            ) {
-                this@Column.AnimatedVisibility(
-                    visible = text3Visible,
-                    enter = slideInHorizontally(
-                        initialOffsetX = { it },
-                        animationSpec = tween(4000)
-                    ) + fadeIn(tween(4000))
-                ) {
-                    Text(
-                        text = "Compared with last month's $${summary.totalSpent - 150}",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = Color.White,
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
-
-            Spacer(Modifier.height(spacing3))
-
-            Box(
-                modifier = Modifier
-                    .height(MaterialTheme.typography.titleMedium.fontSize.value.dp * 1.5f)
-                    .fillMaxWidth()
-            ) {
-                this@Column.AnimatedVisibility(
-                    visible = text4Visible,
-                    enter = slideInVertically(
-                        initialOffsetY = { it },
-                        animationSpec = tween(5500)
-                    ) + fadeIn(tween(5000))
-                ) {
-                    val percentageIncrease =
-                        round((summary.totalSpent / (summary.totalSpent - 150) - 1) * 100)
-                    Text(
-                        text = "Which is ~ ${percentageIncrease}% more",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = Color.White,
-                    )
-                }
-            }
-        }
-    }
-}
-*/
-
 
 @Composable
 fun MonthlySlide(summary: MonthlyExpenseSummary) {
@@ -208,7 +68,7 @@ fun MonthlySlide(summary: MonthlyExpenseSummary) {
     )
 
     LaunchedEffect(Unit) {
-        delay(1000)
+        delay(700)
         text1Visible = true
         delay(2000)
         text2Visible = true
@@ -233,20 +93,23 @@ fun MonthlySlide(summary: MonthlyExpenseSummary) {
                 modifier = Modifier
                     .height(MaterialTheme.typography.titleLarge.fontSize.value.dp * 3f)
                     .fillMaxWidth()
+                    .padding(8.dp),
+                contentAlignment = Alignment.Center
             ) {
                 this@Column.AnimatedVisibility(
                     visible = text1Visible,
                     enter = slideInVertically(
                         initialOffsetY = { -it },
                         animationSpec = tween(2000)
-                    ) + fadeIn(tween(2000))
+                    ) + fadeIn(tween(5000))
                 ) {
                     Text(
                         text = "Your total spend for the month ${summary.monthName} was",
                         style = MaterialTheme.typography.titleLarge,
                         color = Color.White,
                         textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
 
@@ -256,7 +119,7 @@ fun MonthlySlide(summary: MonthlyExpenseSummary) {
 
             Box(
                 modifier = Modifier
-                    .height(MaterialTheme.typography.displayMedium.fontSize.value.dp * 1.5f)
+                    .height(MaterialTheme.typography.displayMedium.fontSize.value.dp * 1f)
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
@@ -272,7 +135,9 @@ fun MonthlySlide(summary: MonthlyExpenseSummary) {
                         style = MaterialTheme.typography.displayMedium,
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+
                     )
                 }
 
@@ -283,7 +148,7 @@ fun MonthlySlide(summary: MonthlyExpenseSummary) {
 
             Box(
                 modifier = Modifier
-                    .height(MaterialTheme.typography.titleMedium.fontSize.value.dp * 1.5f)
+                    .height(MaterialTheme.typography.titleMedium.fontSize.value.dp * 1f)
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
@@ -298,7 +163,8 @@ fun MonthlySlide(summary: MonthlyExpenseSummary) {
                         text = "Compared with last month's $${summary.totalSpent - 150}",
                         style = MaterialTheme.typography.titleMedium,
                         color = Color.White,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
 
@@ -326,6 +192,8 @@ fun MonthlySlide(summary: MonthlyExpenseSummary) {
                         text = "Which is ~ ${percentageIncrease}% more",
                         style = MaterialTheme.typography.titleMedium,
                         color = Color.White,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
 
@@ -334,6 +202,116 @@ fun MonthlySlide(summary: MonthlyExpenseSummary) {
         }
     }
 }
+
+
+/*
+@Composable
+fun MonthlySlide(summary: MonthlyExpenseSummary) {
+    var text1Visible by remember { mutableStateOf(false) }
+    var text2Visible by remember { mutableStateOf(false) }
+    var text3Visible by remember { mutableStateOf(false) }
+    var text4Visible by remember { mutableStateOf(false) }
+    // Animation values for spacing
+    val spacing1 by animateDpAsState(
+        targetValue = if (text1Visible) 16.dp else 0.dp,
+        animationSpec = tween(1000), label = ""
+    )
+    val spacing2 by animateDpAsState(
+        targetValue = if (text2Visible) 16.dp else 0.dp,
+        animationSpec = tween(1000), label = ""
+    )
+    val spacing3 by animateDpAsState(
+        targetValue = if (text3Visible) 16.dp else 0.dp,
+        animationSpec = tween(1000), label = ""
+    )
+    LaunchedEffect(Unit) {
+        delay(1000)
+        text1Visible = true
+        delay(2000)
+        text2Visible = true
+        delay(1000)
+        text3Visible = true
+        delay(1000)
+        text4Visible = true
+    }
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Box(
+                modifier = Modifier
+                    .height(MaterialTheme.typography.titleLarge.fontSize.value.dp * 2.5f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Your total spend for the month ${summary.monthName} was",
+                    style = MaterialTheme.typography.titleLarge,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            Spacer(Modifier.height(spacing1))
+            Box(
+                modifier = Modifier
+                    .height(MaterialTheme.typography.displayMedium.fontSize.value.dp * 1.5f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "$${summary.totalSpent}",
+                    style = MaterialTheme.typography.displayMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+            Spacer(Modifier.height(spacing2))
+            Box(
+                modifier = Modifier
+                    .height(MaterialTheme.typography.titleMedium.fontSize.value.dp * 1.5f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Compared with last month's $${summary.totalSpent - 150}",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+            }
+            Spacer(Modifier.height(spacing3))
+            Box(
+                modifier = Modifier
+                    .height(MaterialTheme.typography.titleMedium.fontSize.value.dp * 1.5f)
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                val percentageIncrease =
+                    round((summary.totalSpent / (summary.totalSpent - 150) - 1) * 100)
+                Text(
+                    text = "Which is ~ ${percentageIncrease}% more",
+                    style = MaterialTheme.typography.titleMedium,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+        }
+    }
+}
+*/
 
 @Preview
 @Composable
